@@ -31,7 +31,10 @@ uses
   Process, {$IFDEF UNIX}BaseUnix,{$ENDIF}
   {$IFDEF WINDOWS}Registry, MMSystem, Windows,{$ENDIF}fddbox, Math, fnewdown, fconfig, fabout, fstrings, flang, freplace, fsitegrabber, fnotification, fcopymove, fconfirm, fvideoformat, Clipbrd,
   strutils, LCLIntf, types, versionitis, INIFiles, LCLVersion,
-  PairSplitter, LCLTranslator, URIParser, fphttpclient, Base64, MD5;
+  PairSplitter, LCLTranslator, URIParser, fphttpclient, Base64, MD5,
+  uDarkStyleParams,uWin32WidgetSetDark,uDarkStyleSchemes,uMetaDarkStyle,
+  opensslsockets
+  ;
 
 type
   TOnWriteStream = procedure(Sender: TObject; APos: Int64) of object;
@@ -10181,6 +10184,10 @@ begin
     end;
   end;
 end;
+
+initialization
+  PreferredAppMode:=pamForceDark;
+  uMetaDarkStyle.ApplyMetaDarkStyle(DefaultDark);
 
 end.
 
